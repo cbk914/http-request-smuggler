@@ -16,7 +16,7 @@ debug = args.debug
 headers = {
     'Transfer-Encoding': 'chunked',
     'Content-Length': '0',
-    'X:': 'X\r\n'
+    'X': 'X\r\n'
 }
 
 try:
@@ -44,9 +44,10 @@ else:
 headers = {
     'Transfer-Encoding': 'chunked',
     'Content-Length': '0',
-    'X': ': X',
+    'X': 'X',
+    ':': ':',
     '\r\n': '\r\n',
-    'Y': ': Y\r\n'
+    'Y': 'Y\r\n'
 }
 
 try:
@@ -74,7 +75,7 @@ else:
 headers = {
     'Transfer-Encoding': 'chunked',
     'Content-Length': '0',
-    'X': 'X, Y'
+    'X': 'X,Y'
 }
 
 try:
