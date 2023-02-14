@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Author:
+# Author: cbk914
 import argparse
 import requests
 
@@ -15,7 +15,7 @@ debug = args.debug
 # Test 1: Splitting headers with whitespace
 headers = {
     'Transfer-Encoding': 'chunked',
-    'Content-Length': '0\r\n',
+    'Content-Length': '0',
     'X:': 'X\r\n'
 }
 
