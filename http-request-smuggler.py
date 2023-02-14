@@ -24,25 +24,25 @@ session = requests.Session()
 session.verify = False
 
 # Send a request with a custom payload and check the response
-def check_technique(technique):
-    if len(technique) != 2:
-        raise ValueError("Invalid technique format. Each technique must be a tuple of (payload, expected_response).")
-    payload, expected_response = technique
-    headers = {"Content-Type": "application/x-www-form-urlencoded"}
-    headers[payload.split(": ")[0]] = payload.split(": ")[1]
+def check_technique(url, technique):
     try:
-        response = session.post(args.url, headers=headers, data=payload)
-    except Exception as e:
-        if args.debug:
-            print(f"Request error: {e}")
+        print(f"[*] Testing technique: {technique.__name__}")
+        session = requests.Session()
+        response = session.request("POST", url, headers=technique())
+        if response.status_code == 400:
+            if "Content-Length" in response.headers:
+                clength = response.headers["Content-Length"]
+                session.headers.update({"Content-Length": str(len(response.content) + int(clength))})
+                response = session.request("POST", url, headers=technique())
+                if response.status_code == 200:
+                    print(f"[+] Vulnerable to {technique.__name__}")
+                    return True
         return False
-    if args.debug:
-        print(f"Response status code: {response.status_code}")
-        print(f"Response content: {response.content}")
-    if expected_response in response.content.decode():
-        print(f"Request smuggling vulnerability found using {payload.split(':')[0]} technique")
-        return True
-    return False
+    except requests.exceptions.RequestException as e:
+        if debug:
+            print(f"[!] Request error: {e}")
+        return False
+
 
 # Try all the techniques and print a message if any are successful
 technique_found = False
