@@ -16,7 +16,12 @@ headers = {
     'X:': 'X\r\n'
 }
 
-response = requests.post(url, headers=headers)
+try:
+    response = requests.post(url, headers=headers, timeout=5)
+    response.raise_for_status()
+except (requests.exceptions.RequestException, ValueError):
+    print('Error: Could not connect to the URL')
+    exit()
 
 if response.status_code == 400:
     print('Possible request smuggling vulnerability detected (Splitting headers with whitespace)')
@@ -30,7 +35,12 @@ headers = {
     '\nX': ': X\r\n'
 }
 
-response = requests.post(url, headers=headers)
+try:
+    response = requests.post(url, headers=headers, timeout=5)
+    response.raise_for_status()
+except (requests.exceptions.RequestException, ValueError):
+    print('Error: Could not connect to the URL')
+    exit()
 
 if response.status_code == 400:
     print('Possible request smuggling vulnerability detected (Splitting headers with a new line)')
@@ -44,7 +54,12 @@ headers = {
     'X': 'X, Y'
 }
 
-response = requests.post(url, headers=headers)
+try:
+    response = requests.post(url, headers=headers, timeout=5)
+    response.raise_for_status()
+except (requests.exceptions.RequestException, ValueError):
+    print('Error: Could not connect to the URL')
+    exit()
 
 if response.status_code == 400:
     print('Possible request smuggling vulnerability detected (Combining headers with a comma)')
