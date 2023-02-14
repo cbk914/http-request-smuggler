@@ -77,4 +77,3 @@ if response.status_code == 400:
     print('Possible request smuggling vulnerability detected (Combining headers with a comma)')
 else:
     print('No request smuggling vulnerability detected')
-detected')
