@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 
 import argparse
 import requests
@@ -26,7 +27,7 @@ else:
 headers = {
     'Transfer-Encoding': 'chunked',
     'Content-Length': '0',
-    '\nX': ':X'
+    '\nX': ': X\r\n'
 }
 
 response = requests.post(url, headers=headers)
@@ -40,8 +41,7 @@ else:
 headers = {
     'Transfer-Encoding': 'chunked',
     'Content-Length': '0',
-    'X': 'X',
-    'Y': 'Y'
+    'X': 'X, Y'
 }
 
 response = requests.post(url, headers=headers)
