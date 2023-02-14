@@ -1,4 +1,6 @@
-#!/usr/bin/python3
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Author:
 import argparse
 import requests
 
@@ -20,11 +22,17 @@ headers = {
 try:
     response = requests.post(url, headers=headers, timeout=5)
     response.raise_for_status()
-except (requests.exceptions.RequestException, ValueError) as e:
+except requests.exceptions.RequestException as e:
     if debug:
-        print(f'Error: {e}')
+        print(f'Request error: {e}')
     else:
         print('Error: Could not connect to the URL')
+    exit()
+except ValueError as e:
+    if debug:
+        print(f'Value error: {e}')
+    else:
+        print('Error: Invalid response from the server')
     exit()
 
 if response.status_code == 400:
@@ -44,11 +52,17 @@ headers = {
 try:
     response = requests.post(url, headers=headers, timeout=5)
     response.raise_for_status()
-except (requests.exceptions.RequestException, ValueError) as e:
+except requests.exceptions.RequestException as e:
     if debug:
-        print(f'Error: {e}')
+        print(f'Request error: {e}')
     else:
         print('Error: Could not connect to the URL')
+    exit()
+except ValueError as e:
+    if debug:
+        print(f'Value error: {e}')
+    else:
+        print('Error: Invalid response from the server')
     exit()
 
 if response.status_code == 400:
@@ -66,11 +80,17 @@ headers = {
 try:
     response = requests.post(url, headers=headers, timeout=5)
     response.raise_for_status()
-except (requests.exceptions.RequestException, ValueError) as e:
+except requests.exceptions.RequestException as e:
     if debug:
-        print(f'Error: {e}')
+        print(f'Request error: {e}')
     else:
         print('Error: Could not connect to the URL')
+    exit()
+except ValueError as e:
+    if debug:
+        print(f'Value error: {e}')
+    else:
+        print('Error: Invalid response from the server')
     exit()
 
 if response.status_code == 400:
