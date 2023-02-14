@@ -25,6 +25,8 @@ session.verify = False
 
 # Send a request with a custom payload and check the response
 def check_technique(technique):
+    if len(technique) != 2:
+        raise ValueError("Invalid technique format. Each technique must be a tuple of (payload, expected_response).")
     payload, expected_response = technique
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     headers[payload.split(": ")[0]] = payload.split(": ")[1]
