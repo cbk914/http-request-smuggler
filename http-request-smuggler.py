@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-
 import argparse
 import requests
 
 parser = argparse.ArgumentParser(description='Check a URL for request smuggling vulnerabilities')
 parser.add_argument('-u', '--url', required=True, help='The URL to test')
+parser.add_argument('-d', '--debug', action='store_true', help='Enable debug mode')
 args = parser.parse_args()
 
 url = args.url
+debug = args.debug
 
 # Test 1: Splitting headers with whitespace
 headers = {
@@ -19,8 +20,11 @@ headers = {
 try:
     response = requests.post(url, headers=headers, timeout=5)
     response.raise_for_status()
-except (requests.exceptions.RequestException, ValueError):
-    print('Error: Could not connect to the URL')
+except (requests.exceptions.RequestException, ValueError) as e:
+    if debug:
+        print(f'Error: {e}')
+    else:
+        print('Error: Could not connect to the URL')
     exit()
 
 if response.status_code == 400:
@@ -38,8 +42,11 @@ headers = {
 try:
     response = requests.post(url, headers=headers, timeout=5)
     response.raise_for_status()
-except (requests.exceptions.RequestException, ValueError):
-    print('Error: Could not connect to the URL')
+except (requests.exceptions.RequestException, ValueError) as e:
+    if debug:
+        print(f'Error: {e}')
+    else:
+        print('Error: Could not connect to the URL')
     exit()
 
 if response.status_code == 400:
@@ -57,8 +64,11 @@ headers = {
 try:
     response = requests.post(url, headers=headers, timeout=5)
     response.raise_for_status()
-except (requests.exceptions.RequestException, ValueError):
-    print('Error: Could not connect to the URL')
+except (requests.exceptions.RequestException, ValueError) as e:
+    if debug:
+        print(f'Error: {e}')
+    else:
+        print('Error: Could not connect to the URL')
     exit()
 
 if response.status_code == 400:
