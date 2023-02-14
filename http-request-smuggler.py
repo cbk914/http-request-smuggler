@@ -36,7 +36,9 @@ else:
 headers = {
     'Transfer-Encoding': 'chunked',
     'Content-Length': '0',
-    '\nX': ': X\r\n'
+    'X': ': X',
+    '\r\n': '\r\n',
+    'Y': ': Y\r\n'
 }
 
 try:
@@ -75,3 +77,4 @@ if response.status_code == 400:
     print('Possible request smuggling vulnerability detected (Combining headers with a comma)')
 else:
     print('No request smuggling vulnerability detected')
+detected')
