@@ -7,13 +7,23 @@ This Python script is designed to check a given URL for request smuggling vulner
 # Instructions
 To use this script, follow these steps:
 
-Install the required packages using the provided requirements.txt file. You can do this by running the following command: pip install -r requirements.txt.
+Install the required packages using the provided requirements.txt file. You can do this by running the following command: 
 
-Run the script using the following command: python http-request-smuggler.py -u <url>. Replace <url> with the URL you want to test.
+  pip install -r requirements.txt.
 
-By default, the script will test for all known request smuggling techniques. You can also specify a single technique to test using the -t option. For example, to test only the CL.TE technique, you can run the following command: python http-request-smuggler.py -u <url> -t CL.TE.
+Run the script using the following command: 
 
-If you encounter any errors, you can run the script with the -d option to print them to the screen. For example: python http-request-smuggler.py -u <url> -d.
+  python http-request-smuggler.py -u <url> 
+  
+Replace <url> with the URL you want to test.
+
+By default, the script will test for all known request smuggling techniques. You can also specify a single technique to test using the -t option. For example, to test only the CL.TE technique, you can run the following command: 
+
+  python http-request-smuggler.py -u <url> -t CL.TE.
+
+If you encounter any errors, you can run the script with the -d option to print them to the screen. For example: 
+  
+  python http-request-smuggler.py -u <url> -d.
 
 # References
 OWASP ASVS (Application Security Verification Standard) section V12.3 covers testing for request smuggling vulnerabilities: https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/15-Testing_for_HTTP_Splitting_Smuggling
