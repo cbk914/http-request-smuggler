@@ -65,4 +65,4 @@ Note that if an error occurs during the execution of the script (such as a netwo
 
 [CAPEC-105: HTTP Request Splitting](https://capec.mitre.org/data/definitions/105.html)  
   
-[OWASP ASVS: HTTP Request Splitting:](https://owasp.org/www-community/attacks/HTTP_Response_Splitting) 
+[OWASP ASVS: HTTP Response Splitting:](https://owasp.org/www-community/attacks/HTTP_Response_Splitting) 
