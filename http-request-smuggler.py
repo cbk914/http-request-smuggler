@@ -53,6 +53,10 @@ def check_vulnerability(url, technique):
     if "SMUGGLE" in response.text:
         print(f"Vulnerable to {technique_name}!")
         return True
+        # check for indication of successful attack in response headers/status code
+    if response.status_code == 400 and "Transfer-Encoding" in response.headers.get("Connection", ""):
+        print(f"Vulnerable to {technique_name}!")
+        return True
 
     print(f"Not vulnerable to {technique_name}!")
     return False
