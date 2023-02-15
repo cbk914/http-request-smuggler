@@ -61,8 +61,8 @@ Note that if an error occurs during the execution of the script (such as a netwo
 
 [Desync Attacks in HTTP/2:](https://portswigger.net/research/desync-attacks-in-http-2) A research article about desync attacks in HTTP/2, which can also result in client-side desynchronization vulnerabilities.  
 
-[CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting'):](https://cwe.mitre.org/data/definitions/113.html)
+[CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)
 
-[CAPEC-105: HTTP Request Splitting:](https://capec.mitre.org/data/definitions/105.html)  
+[CAPEC-105: HTTP Request Splitting](https://capec.mitre.org/data/definitions/105.html)  
   
 [OWASP ASVS: HTTP Request Splitting:](https://owasp.org/www-community/attacks/HTTP_Response_Splitting) 
