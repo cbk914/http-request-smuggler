@@ -33,3 +33,24 @@ The PortSwigger Web Security Academy has a section on request smuggling with sev
 The Common Weakness Enumeration (CWE) has an entry on request smuggling: https://cwe.mitre.org/data/definitions/444.html
 
 The Common Attack Pattern Enumeration and Classification (CAPEC) has an entry on HTTP Request Smuggling: https://capec.mitre.org/data/definitions/33.html
+
+
+# client-side-desync
+This Python script checks for client-side desync vulnerabilities by sending a GET request to the specified URL and checking the response headers. If both the Transfer-Encoding and Content-Length headers are present in the response, this indicates a potential client-side desync vulnerability. The script also includes a debugging option to print the response content and headers for further analysis.
+
+# Instructions
+Run the script using the following command:
+
+  python client_desync_check.py -u <URL> [-d]
+
+Replace <URL> with the URL you want to check for client-side desync vulnerabilities. The -d option is optional and will print the response content and headers for debugging purposes.
+
+For example, to check the URL https://example.com and print debugging information, you would run the following command:
+
+  python client_desync_check.py -u https://example.com -d
+
+The script will send a GET request to the specified URL and check the response headers for client-side desync vulnerabilities. If a vulnerability is found, it will print a warning message. If no vulnerability is found, it will print a message indicating that no vulnerability was detected.
+
+If the -d option was used, the script will also print the response content and headers for further analysis.
+
+Note that if an error occurs during the execution of the script (such as a network error or invalid URL), an error message will be printed and the script will exit.
