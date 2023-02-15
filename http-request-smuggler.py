@@ -34,7 +34,7 @@ def check_vulnerability(url, technique):
     Returns:
     bool: True if the URL is vulnerable, False otherwise.
     """
-    technique_name, payload = list(TECHNIQUES[technique])[1]
+    technique_name, payload = technique, list(TECHNIQUES[technique])[1]
     try:
         response = requests.post(url, headers={"Content-Type": "application/x-www-form-urlencoded"}, data=payload, verify=False)
     except (NewConnectionError, MaxRetryError):
