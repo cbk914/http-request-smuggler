@@ -41,16 +41,28 @@ This Python script checks for client-side desync vulnerabilities by sending a GE
 # Instructions
 Run the script using the following command:
 
-  python client_desync_check.py -u <URL> [-d]
+  python client-side-desync -u <URL> [-d]
 
 Replace <URL> with the URL you want to check for client-side desync vulnerabilities. The -d option is optional and will print the response content and headers for debugging purposes.
 
 For example, to check the URL https://example.com and print debugging information, you would run the following command:
 
-  python client_desync_check.py -u https://example.com -d
+  python client-side-desync.py -u https://example.com -d
 
 The script will send a GET request to the specified URL and check the response headers for client-side desync vulnerabilities. If a vulnerability is found, it will print a warning message. If no vulnerability is found, it will print a message indicating that no vulnerability was detected.
 
 If the -d option was used, the script will also print the response content and headers for further analysis.
 
 Note that if an error occurs during the execution of the script (such as a network error or invalid URL), an error message will be printed and the script will exit.
+
+# References
+
+[HTTP Desync Attacks: Request Smuggling Reborn:](https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn) A comprehensive guide to HTTP desync attacks, which can result in client-side desynchronization vulnerabilities.
+
+[Desync Attacks in HTTP/2:](https://portswigger.net/research/desync-attacks-in-http-2) A research article about desync attacks in HTTP/2, which can also result in client-side desynchronization vulnerabilities.  
+
+[CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting'):](https://cwe.mitre.org/data/definitions/113.html)
+
+[CAPEC-105: HTTP Request Splitting:](https://capec.mitre.org/data/definitions/105.html)  
+  
+[OWASP ASVS: HTTP Request Splitting:](https://owasp.org/www-community/attacks/HTTP_Response_Splitting) 
