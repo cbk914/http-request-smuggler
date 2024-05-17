@@ -9,21 +9,21 @@ To use this script, follow these steps:
 
 Install the required packages using the provided requirements.txt file. You can do this by running the following command: 
 
-  pip install -r requirements.txt.
+  `pip install -r requirements.txt`
 
 Run the script using the following command: 
 
-  python http-request-smuggler.py -u <url> 
+  `python http-request-smuggler.py -u <url>`
   
 Replace <url> with the URL you want to test.
 
 By default, the script will test for all known request smuggling techniques. You can also specify a single technique to test using the -t option. For example, to test only the CLTE technique, you can run the following command: 
 
-  python http-request-smuggler.py -u <url> -t CLTE
+  `python http-request-smuggler.py -u <url> -t CLTE`
 
 If you encounter any errors, you can run the script with the -d option to print them to the screen. For example: 
   
-  python http-request-smuggler.py -u <url> -d
+  `python http-request-smuggler.py -u <url> -d`
 
 # References
 OWASP ASVS (Application Security Verification Standard) section V12.3 covers testing for request smuggling vulnerabilities: https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/15-Testing_for_HTTP_Splitting_Smuggling
@@ -41,13 +41,13 @@ This Python script checks for client-side desync vulnerabilities by sending a GE
 # Instructions
 Run the script using the following command:
 
-  python client-side-desync -u <URL> [-d]
+  `python client-side-desync -u <URL> [-d]`
 
 Replace <URL> with the URL you want to check for client-side desync vulnerabilities. The -d option is optional and will print the response content and headers for debugging purposes.
 
 For example, to check the URL https://example.com and print debugging information, you would run the following command:
 
-  python client-side-desync.py -u https://example.com -d
+  `python client-side-desync.py -u https://example.com -d`
 
 The script will send a GET request to the specified URL and check the response headers for client-side desync vulnerabilities. If a vulnerability is found, it will print a warning message. If no vulnerability is found, it will print a message indicating that no vulnerability was detected.
 
