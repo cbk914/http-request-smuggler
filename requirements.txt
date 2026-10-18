@@ -1,4 +1,19 @@
-argparse
-requests
-urllib3
-sys
+# http-request-smuggler runtime dependencies.
+#
+# Third-party imports: requests (http-request-smuggler.py:5,
+# client-side-desync.py:6), urllib3 (http-request-smuggler.py:6,7),
+# termcolor (run-all.py:6).
+#
+# Removed, standard-library modules: argparse, sys
+#
+# Added: termcolor. run-all.py:6 does `from termcolor import colored`, but
+# termcolor was absent from this manifest, so `python run-all.py` died with
+# ModuleNotFoundError even on a correctly-installed environment.
+#
+# urllib3 pinned to 1.26.x: the code calls urllib3.disable_warnings(
+# InsecureRequestWarning) and catches urllib3.exceptions.NewConnectionError /
+# MaxRetryError. urllib3 1.26.x is the series requests 2.31.0 is built and
+# tested against.
+requests==2.31.0
+urllib3==1.26.18
+termcolor==2.4.0
